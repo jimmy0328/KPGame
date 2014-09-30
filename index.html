@@ -4,28 +4,51 @@
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   </head>
   <body>
-    
-    <div id="kpimage"></div>
+    <div class="jumbotron">
+        <div id="kpimage"></div>
+    </div>
+
+
+
+
 
     <script>
       var kpClass = {};
       kpClass.url = "http://api.kptaipei.tw/v1/albums/";
       kpClass.key = "accessToken=kp540eb38fc4fe13.99451521";
-     
-      kpClass.getAlbums = function(q){
-        var url = kpClass.url+"?"+kpClass.key; 
+       var url = kpClass.url+"?"+kpClass.key; 
+     /**
+      * get albums by index id
+      * @param  {[type]} index [description]
+      * @return {[type]}       [description]
+      */
+      kpClass.getAlbumsById = function(index){
+        $.get(url,function(cb){
+          var html = "<img src='"+cb.data[index-1].thumbnails.small+"'>";
+         $("#kpimage").html(html);
+        })
+      }
+      /**
+       * 
+       * @param  {[type]} index start album
+       * @param  {[type]} total total album
+       * @return {[type]}       [description]
+       */
+      kpClass.getAlbums = function(index,total){
         $.get(url,function(cb){
           var html = "";
-          $.each(cb.data,function(key,value){       
-            if(key>q) return;
-            html += "<img src='"+value.thumbnails.small+"'>";
+          $.each(cb.data,function(key,value){      
+            if(key>index){
+              if(key > (index+total)) return;
+              html += "<img src='"+value.thumbnails.small+"'>";
+            }
           });
          $("#kpimage").html(html);
         })
       }
 
       $(function(){
-       kpClass.getAlbums(10);
+       kpClass.getAlbums(0,5);
       })
 
 
