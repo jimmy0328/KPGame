@@ -9,11 +9,12 @@
 
     <script>
       var kpClass = {};
-      kpClass.url = "http://api.kptaipei.tw/v1/albums/?accessToken=";
-      kpClass.key = "kp540eb38fc4fe13.99451521";
+      kpClass.url = "http://api.kptaipei.tw/v1/albums/";
+      kpClass.key = "accessToken=kp540eb38fc4fe13.99451521";
      
       kpClass.getAlbums = function(q){
-        $.get(kpClass.url+kpClass.key,function(cb){
+        var url = kpClass.url+"?"+kpClass.key; 
+        $.get(url,function(cb){
           var html = "";
           $.each(cb.data,function(key,value){       
             if(key>q) return;
