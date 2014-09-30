@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <script src="assets/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  </head>
+  <body>
+    
+    <div id="kpimage"></div>
+
+    <script>
+      var kpClass = {};
+      kpClass.url = "http://api.kptaipei.tw/v1/albums/?accessToken=";
+      kpClass.key = "kp540eb38fc4fe13.99451521";
+     
+      kpClass.getAlbums = function(q){
+        $.get(kpClass.url+kpClass.key,function(cb){
+          var html = "";
+          $.each(cb.data,function(key,value){       
+            if(key>q) return;
+            html += "<img src='"+value.thumbnails.small+"'>";
+          });
+         $("#kpimage").html(html);
+        })
+      }
+
+      $(function(){
+       kpClass.getAlbums(10);
+      })
+
+
+    </script>
+  </body>
+</html>
