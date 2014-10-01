@@ -1,32 +1,31 @@
-.top {
-  min-height: 50%;
-  min-width: 100%;
-  background: lightgrey;
-  position: relative;
-
-}
-
-.box {
-  width: 322px;
-  height: 215px;
-  margin: 0 auto;
+.container {
   margin-top: 20px;
-  border: 1px solid tomato;
-  box-shadow: 0px 0px 120px tomato;
-  padding-top: 0;
-  position: relative;
 }
 
-.tribox {
-  width: 322px;
-  height: 215px;
-  border: 1px solid silver;
-  margin: 0 auto;
-  box-shadow: 0px 0px 120px silver;
-  padding: 0;
+.carousel-wrapper {
+  width: 325px;
+  height: 213px;
   float: left;
+  margin-left: 15px;
+    margin-top: 70px;
 }
 
-.tribox:nth-child(2) {
-  border: 1px solid red;
+.carousel {
+  width: 322px;
+  height: 213px;
+}
+
+.carousel-inner {
+  margin: 0 auto;
+  width: 320px;
+  height: 213px;
+}
+
+.carousel-indicators {
+  background-color: silver;
+  bottom: -35px;
+}
+
+.carousel-caption {
+  padding-bottom: 0px;
 }
