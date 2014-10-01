@@ -110,36 +110,36 @@
      * @return {[type]}       [description]
      */
     kpClass.getAlbums = function(index, total) {
-        $.get(url, function(res) {
-            // var html = "";
-            // $.each(res.data, function(key, value) {
-            //     if (key > index) {
-            //         if (key > (index + total)) return;
-            //         html += "<img src='" + value.thumbnails.small + "'>";
-            //     }
-            // });
-            // $("#kpimage").html(html);
+      $.get(url, function(res) {
+          // var html = "";
+          // $.each(res.data, function(key, value) {
+          //     if (key > index) {
+          //         if (key > (index + total)) return;
+          //         html += "<img src='" + value.thumbnails.small + "'>";
+          //     }
+          // });
+          // $("#kpimage").html(html);
 
 
-            var random1 = Math.floor(Math.random() * res.data.length);
-            var obj1 = res.data[random1];
-            $('.kpimage1').attr('src', obj1.thumbnails.small);
-            $('.kpimage1title').html(obj1.title);
+          var random1 = Math.floor(Math.random() * res.data.length);
+          var obj1 = res.data[random1];
+          $('.kpimage1').attr('src', obj1.thumbnails.small);
+          $('.kpimage1title').html(obj1.title);
 
-            var random2 = Math.floor(Math.random() * res.data.length);
-            var obj2 = res.data[random2];
-            $('.kpimage2').attr('src', obj2.thumbnails.small);
-            $('.kpimage2title').html(obj2.title);
+          var random2 = Math.floor(Math.random() * res.data.length);
+          var obj2 = res.data[random2];
+          $('.kpimage2').attr('src', obj2.thumbnails.small);
+          $('.kpimage2title').html(obj2.title);
 
-            var random3 = Math.floor(Math.random() * res.data.length);
-            var obj3 = res.data[random3];
-            $('.kpimage3').attr('src', obj3.thumbnails.small);
-            $('.kpimage3title').html(obj3.title);
+          var random3 = Math.floor(Math.random() * res.data.length);
+          var obj3 = res.data[random3];
+          $('.kpimage3').attr('src', obj3.thumbnails.small);
+          $('.kpimage3title').html(obj3.title);
 
-            var kpapi = JSON.stringify(res.data[random1], undefined, 2);
-            $(".kpapi").html(kpapi);
+          var kpapi = JSON.stringify(res.data[random1], undefined, 2);
+          $(".kpapi").html(kpapi);
 
-        })
+      })
     }
 
 
@@ -154,7 +154,6 @@
                  html += "<div class='item'><img src='" + value.thumbnails.small + "'></div>";
               }
           });
-          //  <div class="item active"><img src="..." alt="..."></div>
           $("#carousel-big > .carousel-inner").append(html);
       })
     }
