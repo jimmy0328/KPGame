@@ -22,16 +22,22 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img class="kpimage1" src="..." alt="...">
-
+                      <img class="kpimage1" src="..." alt="...">
+                      <div class="carousel-caption">
+                        <div class="kpimage1title"></div>
+                      </div>
                     </div>
                     <div class="item">
-                        <img class="kpimage2" src="..." alt="...">
-
+                      <img class="kpimage2" src="..." alt="...">
+                      <div class="carousel-caption">
+                        <div class="kpimage2title"></div>
+                      </div>
                     </div>
                     <div class="item">
-                        <img class="kpimage3" src="..." alt="...">
-
+                      <img class="kpimage3" src="..." alt="...">
+                      <div class="carousel-caption">
+                        <div class="kpimage3title"></div>
+                      </div>
                     </div>
                 </div>
 
@@ -46,11 +52,13 @@
         </div>
 
         <div class="col-xs-8">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <pre class="kpapi"></pre>
-                </div>
-            </div>
+          <div class="well">
+            var kpClass = {}; <br>
+            kpClass.url = "http://api.kptaipei.tw/v1/albums/"; <br>
+            kpClass.key = "accessToken=kp540eb38fc4fe13.99451521"; (請到網站申請自己的token) <br>
+            var url = kpClass.url + "?" + kpClass.key;
+          </div>
+          <pre class="kpapi"></pre>
         </div>
 
 
