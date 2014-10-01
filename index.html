@@ -19,7 +19,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <img src="..." alt="...">
+      <img class="kpimage" src="..." alt="...">
       <div class="carousel-caption">
         slide 1
       </div>
@@ -30,7 +30,6 @@
         slide 2
       </div>
     </div>
-    ...
   </div>
 
   <!-- Controls -->
@@ -80,8 +79,8 @@
           $.each(cb.data,function(key,value){      
             if(key>index){
 
-              $('.kpimage').prop('scr',value.thumbnails.small)
-              $('.kpimage').attr('scr',value.thumbnails.small)
+              $('.kpimage').prop('src',value.thumbnails.small)
+              $('.kpimage').attr('src',value.thumbnails.small)
               if(key > (index+total)) return;
               html += "<img src='"+value.thumbnails.small+"'>";
             }
@@ -96,5 +95,6 @@
 
 
     </script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
