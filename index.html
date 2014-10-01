@@ -58,27 +58,27 @@
         <div class="carousel-wrapper">
 
 
-        <div id="carousel-big" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-<!--        <ol class="carousel-indicators">
+            <div id="carousel-big" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <!--        <ol class="carousel-indicators">
                 <li data-target="#carousel-big" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-big" data-slide-to="1"></li>
                 <li data-target="#carousel-big" data-slide-to="2"></li>
             </ol> -->
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <!-- 這裡動態產生 -->
-            </div>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <!-- 這裡動態產生 -->
+                </div>
 
-            <!-- Controls -->
-            <a class="left carousel-control" href="#carousel-big" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </a>
-            <a class="right carousel-control" href="#carousel-big" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </a>
-        </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-big" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-big" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
         </div>
 
     </div>
@@ -144,25 +144,48 @@
 
 
     kpClass.getAllAlbums = function() {
-      $.get(url, function(res) {
-          var html = "";
-          $.each(res.data, function(key, value) {
-              var randomKey = Math.floor(Math.random() * res.data.length);
-              if (key == randomKey ) {
-                  html += "<div class='item active'><img src='" + value.thumbnails.small + "'></div>";
-              }else{
-                 html += "<div class='item'><img src='" + value.thumbnails.small + "'></div>";
-              }
-          });
-          //  <div class="item active"><img src="..." alt="..."></div>
-          $("#carousel-big > .carousel-inner").append(html);
-      })
+        $.get(url, this.callback);
     }
+
+    kpClass.getAllAlbums_AJAX = function() {
+
+        $.ajax({
+            dataType: "json",
+            url: url
+        }).done(this.callback);
+
+    };
+
+    kpClass.getAllAlbums_JSON = function() {
+
+        $.getJSON(url, this.callback);
+
+    };
+
+    kpClass.callback = function(res) {
+
+        var html = "";
+        $.each(res.data, function(key, value) {
+
+            var randomKey = Math.floor(Math.random() * res.data.length);
+            if (key == randomKey) {
+                html += "<div class='item active'><img src='" + value.thumbnails.small + "'></div>";
+            } else {
+                html += "<div class='item'><img src='" + value.thumbnails.small + "'></div>";
+            }
+        });
+
+        $("#carousel-big > .carousel-inner").append(html);
+
+    }
+
 
     $(function() {
         kpClass.getAlbums(0, 1);
 
-        kpClass.getAllAlbums();
+        // kpClass.getAllAlbums();
+        // kpClass.getAllAlbums_AJAX();
+        kpClass.getAllAlbums_JSON();
     })
     </script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
